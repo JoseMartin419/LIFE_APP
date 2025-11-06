@@ -3,8 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://192.168.1.69:8001",  // 🔹 reemplaza por tu IP local real
-    timeout: 15000,
+  baseURL: "http://192.168.1.69:8001", // ⬅️ AJUSTA esto a tu dominio real
+  timeout: 15000,
 });
 
 // ➕ Inyecta el token desde AsyncStorage
