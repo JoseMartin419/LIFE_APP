@@ -1,31 +1,28 @@
-// src/navigation/ParticipantTabs.jsx
+// =====================================================
+// 📁 src/navigation/ParticipantTabs.jsx
+// Tabs del participante (Academia, Inicio, Comunidad)
+// =====================================================
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Activity, BookOpen, CalendarDays, Target } from "lucide-react-native";
+import { BookOpen, Home, Users } from "lucide-react-native";
 import React from "react";
 
 // Screens
+import CommunityScreen from "../pages/CommunityScreen";
 import LearningModule from "../pages/roles/Participant/LearningModule";
-import MyEvents from "../pages/roles/Participant/MyEvents";
-import MyGoals from "../pages/roles/Participant/MyGoals";
-import MyProgress from "../pages/roles/Participant/MyProgress";
 import ParticipantDashboard from "../pages/roles/Participant/ParticipantDashboard";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function ParticipantStack() {
+// 🔹 Stack interno para "Academia"
+function AcademiaStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Dashboard"
-        component={ParticipantDashboard}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
         name="LearningModule"
         component={LearningModule}
-        options={{ title: "Módulo" }}
+        options={{ title: "Módulo de Aprendizaje" }}
       />
     </Stack.Navigator>
   );
@@ -33,37 +30,39 @@ function ParticipantStack() {
 
 export default function ParticipantTabs() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#E11928",
+        tabBarInactiveTintColor: "#666",
+        tabBarLabelStyle: { fontSize: 12 },
+      }}
+    >
+      {/* 🔸 Academia */}
+      {/* 🔸 Inicio (Dashboard principal) */}
       <Tab.Screen
         name="Inicio"
-        component={ParticipantStack}
+        component={ParticipantDashboard}
         options={{
-          tabBarIcon: ({ size }) => <Activity size={size} />,
-          tabBarLabel: "Dashboard",
+          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          tabBarLabel: "Inicio",
         }}
       />
       <Tab.Screen
-        name="Progreso"
-        component={MyProgress}
+        name="Academia"
+        component={AcademiaStack}
         options={{
-          tabBarIcon: ({ size }) => <BookOpen size={size} />,
-          tabBarLabel: "Progreso",
+          tabBarIcon: ({ color, size }) => <BookOpen color={color} size={size} />,
+          tabBarLabel: "Academia",
         }}
       />
+      {/* 🔸 Comunidad */}
       <Tab.Screen
-        name="Eventos"
-        component={MyEvents}
+        name="Comunidad"
+        component={CommunityScreen}
         options={{
-          tabBarIcon: ({ size }) => <CalendarDays size={size} />,
-          tabBarLabel: "Eventos",
-        }}
-      />
-      <Tab.Screen
-        name="Metas"
-        component={MyGoals}
-        options={{
-          tabBarIcon: ({ size }) => <Target size={size} />,
-          tabBarLabel: "Metas",
+          tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
+          tabBarLabel: "Comunidad",
         }}
       />
     </Tab.Navigator>
