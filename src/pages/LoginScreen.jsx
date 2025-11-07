@@ -42,7 +42,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <LinearGradient colors={["#280102", "#1a0001"]} style={styles.container}>
+    <LinearGradient colors={["#c31d22", "#1a0001"]} style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoid}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   forgotPassword: { alignSelf: "flex-end", marginBottom: 24 },
-  forgotPasswordText: { color: "#E63946", fontSize: 14 },
+  forgotPasswordText: { color: "#ffffff", fontSize: 14 },
   loginButton: {
     backgroundColor: "#ffffff",
     paddingVertical: 16,
@@ -166,5 +166,5 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.7)",
     fontSize: 14,
   },
-  registerLinkText: { color: "#E63946", fontWeight: "600" },
+  registerLinkText: { color: "#ffffff", fontWeight: "600" },
 });

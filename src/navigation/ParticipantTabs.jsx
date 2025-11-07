@@ -1,14 +1,18 @@
 // =====================================================
 // 📁 src/navigation/ParticipantTabs.jsx
-// Tabs del participante (Academia, Inicio, Comunidad)
+// Tabs del participante (Academia, Inicio, Comunidad, Mi Panel)
 // =====================================================
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { BookOpen, Home, Users } from "lucide-react-native";
+// Importamos Grid para Mi Panel
+import { BookOpen, Grid, Home, Users } from "lucide-react-native";
 import React from "react";
+
 
 // Screens
 import CommunityScreen from "../pages/CommunityScreen";
+// Importamos MiPanelScreen
+import MiPanelScreen from "../pages/MiPanelScreen";
 import LearningModule from "../pages/roles/Participant/LearningModule";
 import ParticipantDashboard from "../pages/roles/Participant/ParticipantDashboard";
 
@@ -38,7 +42,6 @@ export default function ParticipantTabs() {
         tabBarLabelStyle: { fontSize: 12 },
       }}
     >
-      {/* 🔸 Academia */}
       {/* 🔸 Inicio (Dashboard principal) */}
       <Tab.Screen
         name="Inicio"
@@ -48,6 +51,8 @@ export default function ParticipantTabs() {
           tabBarLabel: "Inicio",
         }}
       />
+      
+      {/* 🔸 Academia */}
       <Tab.Screen
         name="Academia"
         component={AcademiaStack}
@@ -56,6 +61,7 @@ export default function ParticipantTabs() {
           tabBarLabel: "Academia",
         }}
       />
+      
       {/* 🔸 Comunidad */}
       <Tab.Screen
         name="Comunidad"
@@ -63,6 +69,16 @@ export default function ParticipantTabs() {
         options={{
           tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
           tabBarLabel: "Comunidad",
+        }}
+      />
+
+      {/* 🔸 NUEVO: Mi Panel */}
+      <Tab.Screen
+        name="Mi Panel"
+        component={MiPanelScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Grid color={color} size={size} />,
+          tabBarLabel: "Mi Panel",
         }}
       />
     </Tab.Navigator>
